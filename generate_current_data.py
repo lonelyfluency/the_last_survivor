@@ -3,6 +3,7 @@ current_data 是一个保存所有玩家当前游戏状态的一个字典，其�
             player_location: 字典，key为玩家id，value为玩家位置。
             small_item_location: 列表，里面的元素为元组，格式为(种类,(经度，纬度))。
             big_item_location: 列表，里面的元素为元组，格式为(种类,(经度，纬度))。
+            player_blood_limit: 字典，key为玩家id，value为血量上限。
             player_blood: 字典，key为玩家id，value为玩家血量。
             player_damage: 字典，key为玩家的id, value 为玩家攻击力。
             player_atk_range: 字典，key为玩家id，value为玩家攻击半径，单位是米。
@@ -26,7 +27,7 @@ def in_circle(pos, safe_circle):
 
 
 #种类有：
-#1:增加5点攻击力,2：增加10点生命,3：增加5米的真实视野范围。
+#1:增加5点攻击力,2：增加10点生命,3：增加5米的真实视野范围,4:增加5米的攻击范围。
 def get_small_item_location(safe_circle):
     res = []
 
@@ -39,19 +40,19 @@ def get_small_item_location(safe_circle):
         pos = (dlnt, dlat)
         if in_circle(pos, safe_circle):
             s_type = random.randint(1,3)
-            res.append(s_type, pos)
+            res.append((s_type, pos))
             cnt += 1
     return res
 
 
 #种类有：
-#1:增加15点攻击力,2：增加40点生命,3:增加10点生命上限，4：增加15米的真实视野范围,5：获得永久隐身效果。
+#1:增加15点攻击力,2：增加40点生命,3:增加10点生命上限，4：增加15米的真实视野范围,5：增加10米攻击范围，6：获得永久隐身效果。
 def get_big_item_location(safe_circle):
     res = []
-    num_2_generate = 3.1416 * safe_circle[1]**2 // 50000
-    if num_2_generate<1:
+    num_2_generate = 3.1416 * safe_circle[1]**2 // 70000
+    if num_2_generate < 1:
         num_2_generate = 1
-        
+
     cnt = 0
     random.seed = time.time()
     while cnt < num_2_generate:
@@ -60,7 +61,7 @@ def get_big_item_location(safe_circle):
         pos = (dlnt, dlat)
         if in_circle(pos, safe_circle):
             b_type = random.randint(1,5)
-            res.append(b_type, pos)
+            res.append((b_type, pos))
             cnt += 1
     return res
 
@@ -76,11 +77,29 @@ def generate_data(upload_info):
 
     res['small_item_location'] = get_small_item_location(res['safe_circle'])
 
+    res['big_item_location'] = get_big_item_location(res['safe_circle'])
 
-    res['big_item_location'] = []
+    res['player_blood_limit'] = {}
+    for uid in upload_info.keys():
+        res['player_blood_limit'][uid] = 100
+
     res['player_blood'] = {}
+    for uid in upload_info.keys():
+        res['player_blood'][uid] = 100
+
     res['player_damage'] = {}
+    for uid in upload_info.keys():
+        res['player_damage'][uid] = 10
+
     res['player_atk_range'] = {}
+    for uid in upload_info.keys():
+        res['player_atk_range'][uid] = 15
+
     res['player_vision_range'] = {}
+    for uid in upload_info.keys():
+        res['player_vision_range'][uid] = 30
+
     res['player_visible'] = {}
+    for uid in upload_info.keys():
+        res['player_atk_range'][uid] = 1
 
