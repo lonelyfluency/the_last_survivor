@@ -12,20 +12,69 @@ current_data 是一个保存所有玩家当前游戏状态的一个字典，其�
 '''
 
 import random
+import time
+from cor2distance import cor2dis
 
 
 def generate_safe_circle():
     return (121.439286, 31.03061), 686
 
 
+def in_circle(pos, safe_circle):
+    dis = cor2dis(pos, safe_circle[0])
+    return dis < safe_circle[1]
+
+
+#种类有：
+#1:增加5点攻击力,2：增加10点生命,3：增加5米的真实视野范围。
+def get_small_item_location(safe_circle):
+    res = []
+
+    num_2_generate = 3.1416 * safe_circle[1]**2 / 2500
+    cnt = 0
+    random.seed = time.time()
+    while cnt < num_2_generate:
+        dlnt = random.randint(-safe_circle[1], safe_circle[1]) * 4.373E-6
+        dlat = random.randint(-safe_circle[1], safe_circle[1]) * 8.192E-6
+        pos = (dlnt, dlat)
+        if in_circle(pos, safe_circle):
+            s_type = random.randint(1,3)
+            res.append(s_type, pos)
+            cnt += 1
+    return res
+
+
+#种类有：
+#1:增加15点攻击力,2：增加40点生命,3:增加10点生命上限，4：增加15米的真实视野范围,5：获得永久隐身效果。
+def get_big_item_location(safe_circle):
+    res = []
+    num_2_generate = 3.1416 * safe_circle[1]**2 // 50000
+    if num_2_generate<1:
+        num_2_generate = 1
+        
+    cnt = 0
+    random.seed = time.time()
+    while cnt < num_2_generate:
+        dlnt = random.randint(-safe_circle[1], safe_circle[1]) * 4.373E-6
+        dlat = random.randint(-safe_circle[1], safe_circle[1]) * 8.192E-6
+        pos = (dlnt, dlat)
+        if in_circle(pos, safe_circle):
+            b_type = random.randint(1,5)
+            res.append(b_type, pos)
+            cnt += 1
+    return res
+
+
 def generate_data(upload_info):
     res = {}
+
+    res['safe_circle'] = generate_safe_circle()
 
     res['player_location'] = {}
     for uid in upload_info.keys():
         res['player_location'][uid] = upload_info[uid]
 
-    res['small_item_location'] = []
+    res['small_item_location'] = get_small_item_location(res['safe_circle'])
 
 
     res['big_item_location'] = []
@@ -34,4 +83,4 @@ def generate_data(upload_info):
     res['player_atk_range'] = {}
     res['player_vision_range'] = {}
     res['player_visible'] = {}
-    res['safe_circle'] = generate_safe_circle()
+
