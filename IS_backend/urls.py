@@ -14,11 +14,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.conf.urls import url
 from dada import views as dada_views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('refresh/',dada_views.listen_response,name='listen_response'),
-    path('init/',dada_views.initialize,name='initialize')
+    url(r'^admin/', admin.site.urls),
+    url(r'^refresh/',dada_views.listen_response,name='listen_response'),
+    url(r'^init/',dada_views.initialize,name='initialize')
 ]
