@@ -1,4 +1,4 @@
-#coding:utf-8
+# coding:utf-8
 
 '''
 upload_info: 所有客户上传信息的字典，字典的key为每位玩家的id，对应的value为每位玩家的位置(经度,纬度)。
@@ -21,16 +21,16 @@ def add_health(add,health,limit):
     return add+health
 
 
-#更新玩家位置信息
+# 更新玩家位置信息
 def refresh_player_locations(upload_info,current_data):
     for uid in upload_info.keys():
         current_data['player_location'][uid] = upload_info[uid]
 
 
-#更新大小物品信息,同时根据物品更新玩家属性。
+# 更新大小物品信息,同时根据物品更新玩家属性。
 def refresh_item_locations(current_data):
     for uid in current_data['player_location'].keys():
-        #小物品更新
+        # 小物品更新
         delhelper = []
         for s_item in current_data['small_item_location']:
             if cor2dis(s_item[1], current_data['player_location'][uid]) < 3:
@@ -48,7 +48,7 @@ def refresh_item_locations(current_data):
         for s_item in delhelper:
             current_data['small_item_location'].remove(s_item)
 
-        #大物品更新
+        # 大物品更新
         delhelper = []
         for b_item in current_data['big_item_location']:
             if cor2dis(b_item[1], current_data['player_location'][uid]) < 3:
@@ -71,12 +71,12 @@ def refresh_item_locations(current_data):
             current_data['big_item_location'].remove(b_item)
 
 
-#显示敌人列表
+# 显示敌人列表
 def enemy_show(current_data):
     for uid in current_data['player_location'].keys():
         tmp = []
         for eid in current_data['player_location'].keys():
-            if current_data['player_location'][uid] == current_data['player_location'][eid]:
+            if uid == eid:
                 continue
             if cor2dis(current_data['player_location'][uid],
                        current_data['player_location'][eid]) < current_data['player_vision_range'][uid] and \
@@ -85,7 +85,7 @@ def enemy_show(current_data):
         current_data['player_enemy_location'][uid] = tmp
 
 
-#显示物品列表
+# 显示物品列表
 def small_item_show(current_data):
     for uid in current_data['player_location'].keys():
         tmp = []
@@ -95,22 +95,23 @@ def small_item_show(current_data):
         current_data['player_small_location'][uid] = tmp
 
 
-#伤害结算
+# 伤害结算
 def refresh_damage(current_data):
     #毒圈伤害
     for uid in current_data['player_location'].keys():
         if not in_circle(current_data['player_location'][uid],current_data['safe_circle']):
             current_data['player_blood'][uid] -= current_data['safe_circle'][2]
 
-    #敌人伤害
+    # 敌人伤害
     for uid in current_data['player_location'].keys():
         for eid in current_data['player_location'].keys():
             if uid == eid:
                 continue
-            if cor2dis(current_data['player_location'][uid], current_data['player_location'][eid]) < current_data['player_atk_range'][eid]:
+            if cor2dis(current_data['player_location'][uid],
+                       current_data['player_location'][eid]) < current_data['player_atk_range'][eid]:
                 current_data['player_blood'][uid] -= current_data['player_damage'][eid]
 
-    #生死状态
+    # 生死状态
     delhelp = []
     for uid in current_data['player_location'].keys():
         if current_data['player_blood'][uid] <= 0:
@@ -128,7 +129,7 @@ def refresh_damage(current_data):
         current_data['player_small_location'].pop(uid)
 
 
-#主要操作,每秒一刷新
+# 主要操作,每秒一刷新
 def refresh_states(upload_info, current_data):
     refresh_player_locations(upload_info, current_data)
     refresh_item_locations(current_data)
@@ -136,7 +137,8 @@ def refresh_states(upload_info, current_data):
     small_item_show(current_data)
     refresh_damage(current_data)
 
-#刷新毒圈，每5分钟刷新
+
+# 刷新毒圈，每5分钟刷新
 def refresh_safety(current_data):
     random.seed = time.time()
 
@@ -149,7 +151,8 @@ def refresh_safety(current_data):
     current_data['safety_circle'][1] = current_data['safety_circle'][1] / 1.5
     current_data['safety_circle'][2] += 1
 
-#随机生成小物品
+
+# 随机生成小物品
 def get_small_item_location(safe_circle):
     res = []
     num_2_generate = 3.1416 * safe_circle[1]**2 / 2500
@@ -166,7 +169,7 @@ def get_small_item_location(safe_circle):
     return res
 
 
-#随机生成大物品
+# 随机生成大物品
 def get_big_item_location(safe_circle):
     res = []
     num_2_generate = 3.1416 * safe_circle[1]**2 // 70000
@@ -185,7 +188,8 @@ def get_big_item_location(safe_circle):
             cnt += 1
     return res
 
-#刷新物品，每五分钟刷新
+
+# 刷新物品，每五分钟刷新
 def refresh_item(current_data):
     current_data['small_item_location'] = get_small_item_location(current_data['safe_circle'])
     current_data['big_item_location'] = get_big_item_location(current_data['safe_circle'])
