@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="548fade6-3d4d-43b4-94e5-83366e3dcada" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/receive_sendback.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/refresh.py" beforeDir="false" afterPath="$PROJECT_DIR$/refresh.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,11 +21,8 @@
       <file leaf-file-name="refresh.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/refresh.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1476">
-              <caret line="193" column="78" lean-forward="true" selection-start-line="193" selection-start-column="78" selection-end-line="193" selection-end-column="78" />
-              <folding>
-                <element signature="e#223#236#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="3438">
+              <caret line="193" column="78" selection-start-line="193" selection-start-column="78" selection-end-line="193" selection-end-column="78" />
             </state>
           </provider>
         </entry>
@@ -35,8 +30,8 @@
       <file leaf-file-name="receive_sendback.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/receive_sendback.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+            <state relative-caret-position="54">
+              <caret line="3" column="3" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -93,7 +88,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -105,11 +99,13 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///home/dada/PycharmProjects/backend/generate_current_data.py" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -229,7 +225,14 @@
       <option name="project" value="LOCAL" />
       <updated>1526664303326</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="finish_May19_morning">
+      <created>1526693711945</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1526693711945</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -242,7 +245,7 @@
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.24590164" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32786885" />
       <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32786885" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19074222" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19393456" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="SciView" order="3" />
@@ -268,7 +271,8 @@
     <MESSAGE value="a little revise" />
     <MESSAGE value="a little revise1" />
     <MESSAGE value="finish_1" />
-    <option name="LAST_COMMIT_MESSAGE" value="finish_1" />
+    <MESSAGE value="finish_May19_morning" />
+    <option name="LAST_COMMIT_MESSAGE" value="finish_May19_morning" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -278,11 +282,29 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/refresh.py">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3438">
+          <caret line="193" column="78" selection-start-line="193" selection-start-column="78" selection-end-line="193" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/generate_current_data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="39" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/receive_sendback.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="3" column="3" lean-forward="true" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/refresh.py">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3024">
           <caret line="168" column="8" lean-forward="true" selection-start-line="168" selection-start-column="8" selection-end-line="168" selection-end-column="8" />
-          <folding>
-            <element signature="e#223#236#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -297,9 +319,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
           <caret line="3" column="62" selection-start-line="3" selection-start-column="62" selection-end-line="3" selection-end-column="62" />
-          <folding>
-            <element signature="e#223#236#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -340,18 +359,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/refresh.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1476">
-          <caret line="193" column="78" lean-forward="true" selection-start-line="193" selection-start-column="78" selection-end-line="193" selection-end-column="78" />
-          <folding>
-            <element signature="e#223#236#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="3438">
+          <caret line="193" column="78" selection-start-line="193" selection-start-column="78" selection-end-line="193" selection-end-column="78" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/receive_sendback.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        <state relative-caret-position="54">
+          <caret line="3" column="3" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="3" />
         </state>
       </provider>
     </entry>
