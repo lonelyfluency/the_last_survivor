@@ -4,6 +4,8 @@ from logic import refresh, generate_current_data
 import json
 # Create your views here.
 
+
+
 global current_data
 global upload_info
 global game_begin_cnt
