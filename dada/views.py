@@ -325,8 +325,10 @@ def listen_response(request):
     global game_begin_cnt
     global begin_status
     if request.method == "GET":
-        if game_begin_cnt == 4:
+        if game_begin_cnt % 4 == 0:
             begin_status = 1
+        else:
+            begin_status = 0
         if begin_status == 1:
             uid = request.GET.get('id')
             lat = request.GET.get('lati')
