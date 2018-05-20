@@ -273,7 +273,7 @@ def refresh_safety(current_data):
     print(current_data['safe_circle'][0], current_data['safe_circle'][1], current_data['safe_circle'][2])
     current_data['safe_circle'][0][0] = current_data['safe_circle'][0][0] + float(current_data['safe_circle'][1]) * \
                                         random.random() * rd / 4 * 4.373E-6
-    current_data['safe_circle'][0][1] = current_data['safe_circle'][0][0] + float(current_data['safe_circle'][1]) * \
+    current_data['safe_circle'][0][1] = current_data['safe_circle'][0][1] + float(current_data['safe_circle'][1]) * \
                                         random.random() * rd / 4 * 8.192E-6
     print(current_data['safe_circle'][0][0], current_data['safe_circle'][0][1])
     current_data['safe_circle'][1] = float(current_data['safe_circle'][1]) / 1.5
