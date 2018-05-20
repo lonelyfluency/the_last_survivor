@@ -65,8 +65,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dada/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="310" column="67" lean-forward="true" selection-start-line="310" selection-start-column="67" selection-end-line="310" selection-end-column="67" />
+            <state relative-caret-position="375">
+              <caret line="318" column="68" lean-forward="false" selection-start-line="318" selection-start-column="68" selection-end-line="318" selection-end-column="68" />
               <folding>
                 <element signature="e#0#36#0" expanded="true" />
               </folding>
@@ -389,7 +389,14 @@
       <option name="project" value="LOCAL" />
       <updated>1526829098276</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="safe_circle modification">
+      <created>1526830586787</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1526830586787</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -438,7 +445,8 @@
     <MESSAGE value="fixed 500 error of begin_status" />
     <MESSAGE value="django settings modification" />
     <MESSAGE value="begin condition modification" />
-    <option name="LAST_COMMIT_MESSAGE" value="begin condition modification" />
+    <MESSAGE value="safe_circle modification" />
+    <option name="LAST_COMMIT_MESSAGE" value="safe_circle modification" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -806,8 +814,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dada/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="310" column="67" lean-forward="true" selection-start-line="310" selection-start-column="67" selection-end-line="310" selection-end-column="67" />
+        <state relative-caret-position="375">
+          <caret line="318" column="68" lean-forward="false" selection-start-line="318" selection-start-column="68" selection-end-line="318" selection-end-column="68" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
           </folding>

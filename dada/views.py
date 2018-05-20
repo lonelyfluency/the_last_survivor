@@ -315,7 +315,8 @@ def initialize(request):
                 'small_item': current_data['player_small_location'],
                 'big_item': current_data['big_item_location'],
                 'begin_status': begin_status,
-                'safe_circle': current_data['safe_circle']
+                'safe_circle_radius': current_data['safe_circle'][1],
+                'safe_circle_center': current_data['safe_circle'][0]
             })
         )
 
