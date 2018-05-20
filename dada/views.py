@@ -2,6 +2,7 @@ from django.http import HttpResponse
 import random
 import time
 import json
+from math import sin, atan, cos, radians, tan, acos
 # Create your views here.
 
 global current_data
@@ -11,7 +12,6 @@ current_data = {}
 upload_info = {}
 game_begin_cnt = 0
 
-from math import sin, atan, cos, radians, tan, acos
 
 
 def calcDistance(Lat_A, Lng_A, Lat_B, Lng_B):
@@ -47,6 +47,12 @@ def generate_safe_circle():
 def in_circle(pos, safe_circle):
     dis = cor2dis(pos, safe_circle[0])
     return dis < safe_circle[1]
+
+
+def add_health(add,health,limit):
+    if add + health >= limit:
+        return limit
+    return add+health
 
 
 #种类有：
@@ -141,16 +147,6 @@ def generate_data(upload_info):
     return res
 
 
-def in_circle(pos, safe_circle):
-    dis = cor2dis(pos, safe_circle[0])
-    return dis < safe_circle[1]
-
-
-def add_health(add,health,limit):
-    if add + health >= limit:
-        return limit
-    return add+health
-
 
 # 更新玩家位置信息
 def refresh_player_locations(upload_info,current_data):
@@ -190,7 +186,7 @@ def refresh_item_locations(current_data):
                                                                    current_data['player_blood_limit'][uid])
                 elif b_item[0] == 3:
                     current_data['player_blood_limit'][uid] += 20
-                elif b_item[0] ==4:
+                elif b_item[0] == 4:
                     current_data['player_vision_range'][uid] += 15
                 elif b_item[0] == 5:
                     current_data['player_atk_range'][uid] += 15
@@ -216,7 +212,7 @@ def enemy_show(current_data):
         current_data['player_enemy_location'][uid] = tmp
 
 
-# 显示物品列表
+# 显示小物品列表
 def small_item_show(current_data):
     for uid in current_data['player_location'].keys():
         tmp = []
@@ -283,42 +279,6 @@ def refresh_safety(current_data):
     current_data['safety_circle'][2] += 1
 
 
-# 随机生成小物品
-def get_small_item_location(safe_circle):
-    res = []
-    num_2_generate = 3.1416 * safe_circle[1]**2 / 2500
-    cnt = 0
-    random.seed = time.time()
-    while cnt < num_2_generate:
-        dlnt = random.randint(-safe_circle[1], safe_circle[1]) * 4.373E-6
-        dlat = random.randint(-safe_circle[1], safe_circle[1]) * 8.192E-6
-        pos = (dlnt, dlat)
-        if in_circle(pos, safe_circle):
-            s_type = random.randint(1, 4)
-            res.append((s_type, pos))
-            cnt += 1
-    return res
-
-
-# 随机生成大物品
-def get_big_item_location(safe_circle):
-    res = []
-    num_2_generate = 3.1416 * safe_circle[1]**2 // 70000
-    if num_2_generate < 1:
-        num_2_generate = 1
-
-    cnt = 0
-    random.seed = time.time()
-    while cnt < num_2_generate:
-        dlnt = random.randint(-safe_circle[1], safe_circle[1]) * 4.373E-6
-        dlat = random.randint(-safe_circle[1], safe_circle[1]) * 8.192E-6
-        pos = (dlnt, dlat)
-        if in_circle(pos, safe_circle):
-            b_type = random.randint(1, 6)
-            res.append((b_type, pos))
-            cnt += 1
-    return res
-
 
 # 刷新物品，每五分钟刷新
 def refresh_item(current_data):
@@ -340,7 +300,7 @@ def initialize(request):
         upload_info[uid] = location
 
         current_data = generate_current_data.generate_data(upload_info)
-        #print('game_begin_cnt: ', game_begin_cnt)
+        print('game_begin_cnt: ', game_begin_cnt)
         return HttpResponse(
             json.dumps({
                 'id': uid,
@@ -355,6 +315,7 @@ def initialize(request):
                 'big_item': current_data['big_item_location']
             })
         )
+
 
 def listen_response(request):
     global current_data
@@ -387,3 +348,24 @@ def listen_response(request):
             )
         else:
             return HttpResponse('Waiting other players...')
+
+
+def refresh_circle(request):
+    global current_data
+    if request.method == "GET":
+        refresh_safety(current_data)
+        print('safe_circle_refreshed.')
+        return HttpResponse(
+            json.dumps({
+            'center': current_data['safe_circle'][0],
+            'radius': current_data['safe_circle'][1]
+        })
+        )
+
+
+def new_item(request):
+    global current_data
+    if request.method == "GET":
+        refresh_item(current_data)
+        print('item_refreshed.')
+        return HttpResponse('item_refreshed.')

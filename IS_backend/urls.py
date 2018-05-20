@@ -20,5 +20,7 @@ from dada import views as dada_views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^refresh/',dada_views.listen_response,name='listen_response'),
-    url(r'^init/',dada_views.initialize,name='initialize')
+    url(r'^init/',dada_views.initialize,name='initialize'),
+    url(r'^circle/',dada_views.refresh_circle, name = 'circle'),
+    url(r'^item/',dada_views.new_item, name='item')
 ]
