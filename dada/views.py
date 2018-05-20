@@ -8,10 +8,11 @@ from math import sin, atan, cos, radians, tan, acos
 global current_data
 global upload_info
 global game_begin_cnt
+global begin_status
 current_data = {}
 upload_info = {}
 game_begin_cnt = 0
-
+begin_status = 0
 
 
 def calcDistance(Lat_A, Lng_A, Lat_B, Lng_B):
@@ -299,7 +300,7 @@ def initialize(request):
 
         upload_info[uid] = location
 
-        current_data = generate_current_data.generate_data(upload_info)
+        current_data = generate_data(upload_info)
         print('game_begin_cnt: ', game_begin_cnt)
         return HttpResponse(
             json.dumps({
@@ -312,7 +313,8 @@ def initialize(request):
                 'visible': current_data['player_visible'][uid],
                 'enemy': current_data['player_enemy_location'][uid],
                 'small_item': current_data['player_small_location'],
-                'big_item': current_data['big_item_location']
+                'big_item': current_data['big_item_location'],
+                'begin_status': begin_status
             })
         )
 
@@ -321,9 +323,11 @@ def listen_response(request):
     global current_data
     global upload_info
     global game_begin_cnt
+    global begin_status
     if request.method == "GET":
         if game_begin_cnt == 4:
-            game_begin_cnt = 0
+            begin_status = 1
+        if begin_status == 1:
             uid = request.GET.get('id')
             lat = request.GET.get('lati')
             lng = request.GET.get('longi')
@@ -331,7 +335,7 @@ def listen_response(request):
             print('id: ',uid)
             print('location: ',location)
             upload_info[uid] = location
-            refresh.refresh_states(upload_info,current_data)
+            refresh_states(upload_info,current_data)
             return HttpResponse(
                 json.dumps({
                     'id' : uid,
