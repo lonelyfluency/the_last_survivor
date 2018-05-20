@@ -42,7 +42,7 @@ def cor2dis(loc1, loc2):
 
 
 def generate_safe_circle():
-    return (121.439286, 31.03061), 686, 1
+    return [[121.439286, 31.03061], 686, 1]
 
 
 def in_circle(pos, safe_circle):
@@ -269,15 +269,15 @@ def refresh_states(upload_info, current_data):
 # 刷新毒圈，每5分钟刷新
 def refresh_safety(current_data):
     random.seed = time.time()
-
-    current_data['safety_circle'][0][0] = current_data['safety_circle'][0][0] + random.randint(
-                                                            -current_data['safety_circle'][1],
-                                                            current_data['safety_circle'][1]) / 4 * 4.373E-6
-    current_data['safety_circle'][0][1] = current_data['safety_circle'][0][0] + random.randint(
-                                                            -current_data['safety_circle'][1],
-                                                            current_data['safety_circle'][1]) / 4 * 8.192E-6
-    current_data['safety_circle'][1] = current_data['safety_circle'][1] / 1.5
-    current_data['safety_circle'][2] += 1
+    rd = 1 if random.random() > 0.5 else -1
+    print(current_data['safe_circle'][0], current_data['safe_circle'][1], current_data['safe_circle'][2])
+    current_data['safe_circle'][0][0] = current_data['safe_circle'][0][0] + float(current_data['safe_circle'][1]) * \
+                                        random.random() * rd / 4 * 4.373E-6
+    current_data['safe_circle'][0][1] = current_data['safe_circle'][0][0] + float(current_data['safe_circle'][1]) * \
+                                        random.random() * rd / 4 * 8.192E-6
+    print(current_data['safe_circle'][0][0], current_data['safe_circle'][0][1])
+    current_data['safe_circle'][1] = float(current_data['safe_circle'][1]) / 1.5
+    current_data['safe_circle'][2] += 1
 
 
 
