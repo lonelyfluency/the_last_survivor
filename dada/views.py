@@ -280,7 +280,6 @@ def refresh_safety(current_data):
     current_data['safe_circle'][2] += 1
 
 
-
 # 刷新物品，每五分钟刷新
 def refresh_item(current_data):
     current_data['small_item_location'] = get_small_item_location(current_data['safe_circle'])
@@ -361,19 +360,29 @@ def listen_response(request):
 def refresh_circle(request):
     global current_data
     if request.method == "GET":
-        refresh_safety(current_data)
-        print('safe_circle_refreshed.')
-        return HttpResponse(
-            json.dumps({
-            'center': current_data['safe_circle'][0],
-            'radius': current_data['safe_circle'][1]
-        })
-        )
+        if begin_status == 1:
+            refresh_safety(current_data)
+            print('safe_circle_refreshed.')
+            return HttpResponse(
+                json.dumps({
+                'center': current_data['safe_circle'][0],
+                'radius': current_data['safe_circle'][1]
+            })
+            )
+        else:
+            print('game_not_begin.')
+            return HttpResponse(
+                'game_not_begin.'
+            )
 
 
 def new_item(request):
     global current_data
     if request.method == "GET":
-        refresh_item(current_data)
-        print('item_refreshed.')
-        return HttpResponse('item_refreshed.')
+        if begin_status == 1:
+            refresh_item(current_data)
+            print('item_refreshed.')
+            return HttpResponse('item_refreshed.')
+        else:
+            print('game_not_begin.')
+            return HttpResponse('game_not_begin.')
