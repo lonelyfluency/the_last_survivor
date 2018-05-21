@@ -83,10 +83,10 @@ def get_big_item_location(safe_circle):
     res = []
     rad = int(safe_circle[1])
     num_2_generate = 3.1416 * rad**2 // 180000
-    print('big_num: ', num_2_generate)
+
     if num_2_generate < 1:
         num_2_generate = 1
-
+    print('big_num: ', num_2_generate)
     cnt = 0
     random.seed = time.time()
     while cnt < num_2_generate:
