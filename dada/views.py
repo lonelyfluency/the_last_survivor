@@ -60,8 +60,8 @@ def add_health(add,health,limit):
 #1:增加5点攻击力,2：增加10点生命,3：增加5米的真实视野范围,4:增加5米的攻击范围。
 def get_small_item_location(safe_circle):
     res = []
-    num_2_generate = 3.1416 * safe_circle[1]**2 // 10000
-    print('num: ', num_2_generate)
+    num_2_generate = 3.1416 * int(safe_circle[1])**2 // 10000
+    print('small_num: ', num_2_generate)
     cnt = 0
     random.seed = time.time()
     while cnt < num_2_generate:
@@ -80,8 +80,8 @@ def get_small_item_location(safe_circle):
 #1:增加15点攻击力,2：增加50点生命,3:增加20点生命上限，4：增加15米的真实视野范围,5：增加15米攻击范围，6：获得永久隐身效果。
 def get_big_item_location(safe_circle):
     res = []
-    num_2_generate = 3.1416 * safe_circle[1]**2 // 180000
-
+    num_2_generate = 3.1416 * int(safe_circle[1])**2 // 180000
+    print('big_num: ', num_2_generate)
     if num_2_generate < 1:
         num_2_generate = 1
 
