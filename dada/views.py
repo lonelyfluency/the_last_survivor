@@ -61,7 +61,7 @@ def add_health(add,health,limit):
 def get_small_item_location(safe_circle):
     res = []
     num_2_generate = 3.1416 * safe_circle[1]**2 // 10000
-
+    print('num: ', num_2_generate)
     cnt = 0
     random.seed = time.time()
     while cnt < num_2_generate:
@@ -282,13 +282,7 @@ def refresh_safety(current_data):
 
 # 刷新物品，每五分钟刷新
 def refresh_item(current_data):
-    print('pre:')
-    print('small:')
-    for i in current_data['small_item_location']:
-        print(i)
-    print('big:')
-    for i in current_data['big_item_location']:
-        print(i)
+
     current_data['small_item_location'] = get_small_item_location(current_data['safe_circle'])
     print('small:')
     for i in current_data['small_item_location']:
