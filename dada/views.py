@@ -318,6 +318,7 @@ def initialize(request):
                 'small_item': current_data['player_small_location'],
                 'big_item': current_data['big_item_location'],
                 'begin_status': begin_status,
+                'player_num': game_begin_cnt,
                 'safe_circle_radius': current_data['safe_circle'][1],
                 'safe_circle_center': current_data['safe_circle'][0]
             })
@@ -330,10 +331,12 @@ def listen_response(request):
     global game_begin_cnt
     global begin_status
     if request.method == "GET":
-        if game_begin_cnt % 4 == 0:
+        if game_begin_cnt >= 4:
             begin_status = 1
+            game_begin_cnt = 0
         else:
             begin_status = 0
+
         if begin_status == 1:
             uid = request.GET.get('id')
             lat = request.GET.get('lati')
