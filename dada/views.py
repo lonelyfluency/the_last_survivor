@@ -9,11 +9,12 @@ global current_data
 global upload_info
 global game_begin_cnt
 global begin_status
+global has_begin
 current_data = {}
 upload_info = {}
 game_begin_cnt = 0
 begin_status = 0
-
+has_begin = 0
 
 def calcDistance(Lat_A, Lng_A, Lat_B, Lng_B):
     ra = 6378.140
@@ -330,12 +331,15 @@ def listen_response(request):
     global upload_info
     global game_begin_cnt
     global begin_status
+    global has_begin
     if request.method == "GET":
         if game_begin_cnt >= 4:
             begin_status = 1
+            has_begin = 1
             game_begin_cnt = 0
         else:
-            begin_status = 0
+            if not has_begin:
+                begin_status = 0
 
         if begin_status == 1:
             uid = request.GET.get('id')
