@@ -62,6 +62,8 @@ def get_small_item_location(safe_circle):
     res = []
     rad = int(safe_circle[1])
     num_2_generate = 3.1416 * rad**2 // 10000
+    if num_2_generate < 1:
+        num_2_generate = 1
     print('small_num: ', num_2_generate)
     cnt = 0
     random.seed = time.time()
