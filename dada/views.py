@@ -282,9 +282,21 @@ def refresh_safety(current_data):
 
 # 刷新物品，每五分钟刷新
 def refresh_item(current_data):
+    print('pre:')
+    print('small:')
+    for i in current_data['small_item_location']:
+        print(i)
+    print('big:')
+    for i in current_data['big_item_location']:
+        print(i)
     current_data['small_item_location'] = get_small_item_location(current_data['safe_circle'])
     current_data['big_item_location'] = get_big_item_location(current_data['safe_circle'])
-
+    print('small:')
+    for i in current_data['small_item_location']:
+        print(i)
+    print('big:')
+    for i in current_data['big_item_location']:
+        print(i)
 
 def initialize(request):
     global current_data
