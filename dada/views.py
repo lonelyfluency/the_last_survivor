@@ -60,13 +60,14 @@ def add_health(add,health,limit):
 #1:增加5点攻击力,2：增加10点生命,3：增加5米的真实视野范围,4:增加5米的攻击范围。
 def get_small_item_location(safe_circle):
     res = []
-    num_2_generate = 3.1416 * int(safe_circle[1])**2 // 10000
+    rad = int(safe_circle[1])
+    num_2_generate = 3.1416 * rad**2 // 10000
     print('small_num: ', num_2_generate)
     cnt = 0
     random.seed = time.time()
     while cnt < num_2_generate:
-        dlnt = random.randint(-safe_circle[1], safe_circle[1]) * 4.373E-6
-        dlat = random.randint(-safe_circle[1], safe_circle[1]) * 8.192E-6
+        dlnt = random.randint(-rad, rad) * 4.373E-6
+        dlat = random.randint(-rad, rad) * 8.192E-6
         pos = (dlnt+safe_circle[0][0], dlat+safe_circle[0][1])
 
         if in_circle(pos, safe_circle):
@@ -80,7 +81,8 @@ def get_small_item_location(safe_circle):
 #1:增加15点攻击力,2：增加50点生命,3:增加20点生命上限，4：增加15米的真实视野范围,5：增加15米攻击范围，6：获得永久隐身效果。
 def get_big_item_location(safe_circle):
     res = []
-    num_2_generate = 3.1416 * int(safe_circle[1])**2 // 180000
+    rad = int(safe_circle[1])
+    num_2_generate = 3.1416 * rad**2 // 180000
     print('big_num: ', num_2_generate)
     if num_2_generate < 1:
         num_2_generate = 1
@@ -88,8 +90,8 @@ def get_big_item_location(safe_circle):
     cnt = 0
     random.seed = time.time()
     while cnt < num_2_generate:
-        dlnt = random.randint(-safe_circle[1], safe_circle[1]) * 4.373E-6
-        dlat = random.randint(-safe_circle[1], safe_circle[1]) * 8.192E-6
+        dlnt = random.randint(-rad, rad) * 4.373E-6
+        dlat = random.randint(-rad, rad) * 8.192E-6
         pos = (dlnt + safe_circle[0][0], dlat + safe_circle[0][1])
         if in_circle(pos, safe_circle):
             b_type = random.randint(1, 6)
@@ -282,15 +284,9 @@ def refresh_safety(current_data):
 
 # 刷新物品，每五分钟刷新
 def refresh_item(current_data):
-
     current_data['small_item_location'] = get_small_item_location(current_data['safe_circle'])
-    print('small:')
-    for i in current_data['small_item_location']:
-        print(i)
     current_data['big_item_location'] = get_big_item_location(current_data['safe_circle'])
-    print('big:')
-    for i in current_data['big_item_location']:
-        print(i)
+
 
 def initialize(request):
     global current_data
