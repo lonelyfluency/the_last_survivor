@@ -43,7 +43,7 @@ def cor2dis(loc1, loc2):
 
 
 def generate_safe_circle():
-    return [[121.439286, 31.03061], 686, 1]
+    return [[121.43343, 31.021385], 686, 1]
 
 
 def in_circle(pos, safe_circle):
@@ -333,7 +333,7 @@ def listen_response(request):
     global begin_status
     global has_begin
     if request.method == "GET":
-        if game_begin_cnt >= 4:
+        if game_begin_cnt >= 2:
             begin_status = 1
             has_begin = 1
             game_begin_cnt = 0
@@ -350,6 +350,12 @@ def listen_response(request):
             print('location: ',location)
             upload_info[uid] = location
             refresh_states(upload_info,current_data)
+            try:
+                current_data['player_blood'][uid]
+            except Exception:
+                return HttpResponse(
+                    "Sorry, game over!"
+                )
             return HttpResponse(
                 json.dumps({
                     'id' : uid,
