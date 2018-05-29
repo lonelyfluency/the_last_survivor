@@ -351,7 +351,10 @@ def listen_response(request):
             upload_info[uid] = location
             refresh_states(upload_info,current_data)
             try:
-                current_data['player_blood'][uid]
+                if uid not in current_data['player_blood']:
+                    return HttpResponse(
+                        "Sorry, game over!"
+                    )
             except Exception:
                 return HttpResponse(
                     "Sorry, game over!"
