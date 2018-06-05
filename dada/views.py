@@ -118,11 +118,11 @@ def generate_data(upload_info):
 
     res['player_blood_limit'] = {}
     for uid in upload_info.keys():
-        res['player_blood_limit'][uid] = 100
+        res['player_blood_limit'][uid] = 200
 
     res['player_blood'] = {}
     for uid in upload_info.keys():
-        res['player_blood'][uid] = 100
+        res['player_blood'][uid] = 200
 
     res['player_damage'] = {}
     for uid in upload_info.keys():
@@ -134,7 +134,7 @@ def generate_data(upload_info):
 
     res['player_vision_range'] = {}
     for uid in upload_info.keys():
-        res['player_vision_range'][uid] = 30
+        res['player_vision_range'][uid] = 40
 
     res['player_visible'] = {}
     for uid in upload_info.keys():
@@ -353,7 +353,18 @@ def listen_response(request):
             try:
                 if uid not in current_data['player_blood']:
                     return HttpResponse(
-                        "Sorry, game over!"
+                        json.dumps({
+                            'id': uid,
+                            'blood': 0,
+                            'damage': 0,
+                            'blood_limit': 0,
+                            'atk_range': 0,
+                            'vision_range': 0,
+                            'visible': 0,
+                            'enemy': [],
+                            'small_item': [],
+                            'big_item':[]
+                        })
                     )
             except Exception:
                 return HttpResponse(
