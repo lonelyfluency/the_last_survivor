@@ -236,7 +236,7 @@ def refresh_damage(current_data):
     #毒圈伤害
     for uid in current_data['player_location'].keys():
         if not in_circle(current_data['player_location'][uid],current_data['safe_circle_now']):
-            current_data['player_blood'][uid] -= current_data['safe_circle_now'][2]
+            current_data['player_blood'][uid] -= current_data['safe_circle'][2]
 
     # 敌人伤害
     for uid in current_data['player_location'].keys():
