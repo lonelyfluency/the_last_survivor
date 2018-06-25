@@ -12,6 +12,8 @@ current_data 是一个保存所有玩家当前游戏状态的一个字典，其�
             player_enemy_location: 字典，key为玩家id，value为列表，内容为玩家真实视野内的敌人位置[(),(),(),()]。
             player_small_location: 字典，key为玩家id，value为列表，内容为玩家真实视野内的小物品位置[(),(),(),()]。
             safe_circle: 元组， ((经度,纬度),半径,等级)
+            safe_circle_now:元组，（（经度，纬度），半径，等级）
+            safe_circle_shrink: 元组，（(经度减少，纬度减少)，圆心靠近量）
             the_dead: 列表，里面是所有死亡玩家的id。
 '''
 

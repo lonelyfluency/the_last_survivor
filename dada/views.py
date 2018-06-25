@@ -2,6 +2,7 @@ from django.http import HttpResponse
 import random
 import time
 import json
+import copy
 from math import sin, atan, cos, radians, tan, acos
 # Create your views here.
 
@@ -107,6 +108,8 @@ def generate_data(upload_info):
     res = {}
 
     res['safe_circle'] = generate_safe_circle()
+    res['safe_circle_now'] = copy.deepcopy(res['safe_circle'])
+    res['safe_circle_shrink'] = (0,0)
 
     res['player_location'] = {}
     for uid in upload_info.keys():
@@ -166,7 +169,7 @@ def refresh_item_locations(current_data):
         # 小物品更新
         delhelper = []
         for s_item in current_data['small_item_location']:
-            if cor2dis(s_item[1], current_data['player_location'][uid]) < 3:
+            if cor2dis(s_item[1], current_data['player_location'][uid]) < 5:
                 if s_item[0] == 1:
                     current_data['player_damage'][uid] += 5
                 elif s_item[0] == 2:
@@ -184,7 +187,7 @@ def refresh_item_locations(current_data):
         # 大物品更新
         delhelper = []
         for b_item in current_data['big_item_location']:
-            if cor2dis(b_item[1], current_data['player_location'][uid]) < 3:
+            if cor2dis(b_item[1], current_data['player_location'][uid]) < 5:
                 if b_item[0] == 1:
                     current_data['player_damage'][uid] += 15
                 elif b_item[0] == 2:
@@ -223,7 +226,7 @@ def small_item_show(current_data):
     for uid in current_data['player_location'].keys():
         tmp = []
         for loc in current_data['small_item_location']:
-            if cor2dis(current_data['player_location'][uid],loc[1]) < current_data['player_vision_range'][uid]:
+            if cor2dis(current_data['player_location'][uid], loc[1]) < current_data['player_vision_range'][uid]:
                 tmp.append(loc)
         current_data['player_small_location'][uid] = tmp
 
@@ -232,8 +235,8 @@ def small_item_show(current_data):
 def refresh_damage(current_data):
     #毒圈伤害
     for uid in current_data['player_location'].keys():
-        if not in_circle(current_data['player_location'][uid],current_data['safe_circle']):
-            current_data['player_blood'][uid] -= current_data['safe_circle'][2]
+        if not in_circle(current_data['player_location'][uid],current_data['safe_circle_now']):
+            current_data['player_blood'][uid] -= current_data['safe_circle_now'][2]
 
     # 敌人伤害
     for uid in current_data['player_location'].keys():
@@ -262,6 +265,21 @@ def refresh_damage(current_data):
         current_data['player_small_location'].pop(uid)
 
 
+#毒圈逐渐缩小
+def shrink_circle(current_data):
+    p_lng = current_data['safe_circle_now'][0][0]
+    p_lat = current_data['safe_circle_now'][0][1]
+    p_radius = current_data['safe_circle_now'][1]
+    p_level = current_data['safe_circle_now'][2]
+    d_lng = current_data['safe_circle_shrink'][0][0]
+    d_lat = current_data['safe_circle_shrink'][0][1]
+    d_radius = current_data['safe_circle_shrink'][1]
+
+    current_data['safe_circle_now'] = ((p_lng+d_lng, p_lat+d_lat), p_radius - d_radius, p_level)
+
+
+
+
 # 主要操作,每秒一刷新
 def refresh_states(upload_info, current_data):
     refresh_player_locations(upload_info, current_data)
@@ -269,6 +287,7 @@ def refresh_states(upload_info, current_data):
     enemy_show(current_data)
     small_item_show(current_data)
     refresh_damage(current_data)
+    shrink_circle(current_data)
 
 
 # 刷新毒圈，每5分钟刷新
@@ -276,13 +295,24 @@ def refresh_safety(current_data):
     random.seed = time.time()
     rd = 1 if random.random() > 0.5 else -1
     print(current_data['safe_circle'][0], current_data['safe_circle'][1], current_data['safe_circle'][2])
+    last_radius = current_data['safe_circle'][1]
+    last_lng = current_data['safe_circle'][0][0]
+    last_lat = current_data['safe_circle'][0][1]
     current_data['safe_circle'][0][0] = current_data['safe_circle'][0][0] + float(current_data['safe_circle'][1]) * \
                                         random.random() * rd / 4 * 4.373E-6
     current_data['safe_circle'][0][1] = current_data['safe_circle'][0][1] + float(current_data['safe_circle'][1]) * \
                                         random.random() * rd / 4 * 8.192E-6
     print(current_data['safe_circle'][0][0], current_data['safe_circle'][0][1])
+    new_lng = current_data['safe_circle'][0][0]
+    new_lat = current_data['safe_circle'][0][1]
     current_data['safe_circle'][1] = float(current_data['safe_circle'][1]) / 1.5
     current_data['safe_circle'][2] += 1
+    new_radius = current_data['safe_circle'][1]
+    radius_shrink = (last_radius-new_radius)/100.0
+    d_lng = (new_lng-last_lng)/100.0
+    d_lat = (new_lat-last_lat)/100.0
+    current_data['safe_circle_shrink'] = ((d_lng,d_lat),radius_shrink)
+
 
 
 # 刷新物品，每五分钟刷新
@@ -321,7 +351,9 @@ def initialize(request):
                 'begin_status': begin_status,
                 'player_num': game_begin_cnt,
                 'safe_circle_radius': current_data['safe_circle'][1],
-                'safe_circle_center': current_data['safe_circle'][0]
+                'safe_circle_center': current_data['safe_circle'][0],
+                'safe_circle_now_radius': current_data['safe_circle_now'][1],
+                'safe_circle_now_center': current_data['safe_circle_now'][0]
             })
         )
 
@@ -363,7 +395,7 @@ def listen_response(request):
                             'visible': 0,
                             'enemy': [],
                             'small_item': [],
-                            'big_item':[]
+                            'big_item': []
                         })
                     )
             except Exception:
@@ -381,7 +413,9 @@ def listen_response(request):
                     'visible' : current_data['player_visible'][uid],
                     'enemy' : current_data['player_enemy_location'][uid],
                     'small_item' : current_data['player_small_location'],
-                    'big_item' : current_data['big_item_location']
+                    'big_item' : current_data['big_item_location'],
+                    'safe_circle_now_radius' : current_data['safe_circle_now'][1],
+                    'safe_circle_now_center' : current_data['safe_circle_now'][0]
                 })
             )
         else:
