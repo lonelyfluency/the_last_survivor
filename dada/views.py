@@ -444,7 +444,8 @@ def listen_response(request):
                     'big_item' : current_data['big_item_location'],
                     'safe_circle_now_radius' : current_data['safe_circle_now'][1],
                     'safe_circle_now_center' : current_data['safe_circle_now'][0],
-                    'safe_circle_center' : current_data['safe_circle'][0]
+                    'safe_circle_center' : current_data['safe_circle'][0],
+                    'safe_circle_radius' : current_data['safe_circle'][1]
                 })
             )
         else:
