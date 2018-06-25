@@ -274,7 +274,7 @@ def shrink_circle(current_data):
     d_lng = current_data['safe_circle_shrink'][0][0]
     d_lat = current_data['safe_circle_shrink'][0][1]
     d_radius = current_data['safe_circle_shrink'][1]
-
+    print(p_lng,p_lat,p_radius,p_level,d_lng,d_lat,d_radius)
     current_data['safe_circle_now'] = ((p_lng+d_lng, p_lat+d_lat), p_radius - d_radius, p_level)
     print(current_data['safe_circle_now'])
 
@@ -287,7 +287,7 @@ def refresh_states(upload_info, current_data):
     enemy_show(current_data)
     small_item_show(current_data)
     refresh_damage(current_data)
-    #shrink_circle(current_data)
+    shrink_circle(current_data)
 
 
 # 刷新毒圈，每5分钟刷新
