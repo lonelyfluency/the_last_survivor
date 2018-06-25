@@ -4,7 +4,6 @@
     <list default="true" id="548fade6-3d4d-43b4-94e5-83366e3dcada" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dada/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/dada/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/generate_current_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/generate_current_data.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -35,7 +34,7 @@
         <entry file="file://$PROJECT_DIR$/generate_current_data.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="306">
-              <caret line="17" column="42" selection-start-line="17" selection-start-column="42" selection-end-line="17" selection-end-column="42" />
+              <caret line="17" column="59" selection-start-line="17" selection-start-column="59" selection-end-line="17" selection-end-column="59" />
             </state>
           </provider>
         </entry>
@@ -73,8 +72,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dada/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="416" column="59" lean-forward="true" selection-start-line="416" selection-start-column="59" selection-end-line="416" selection-end-column="59" />
+            <state relative-caret-position="249">
+              <caret line="430" column="45" lean-forward="true" selection-start-line="430" selection-start-column="45" selection-end-line="430" selection-end-column="45" />
               <folding>
                 <element signature="e#0#36#0" expanded="true" />
               </folding>
@@ -578,7 +577,21 @@
       <option name="project" value="LOCAL" />
       <updated>1529923721761</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="meet item and show">
+      <created>1529928238863</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1529928238864</updated>
+    </task>
+    <task id="LOCAL-00046" summary="meet item and show.modified.">
+      <created>1529928549467</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1529928549467</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -641,8 +654,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="item test finished" />
-    <MESSAGE value="item test finished test" />
     <MESSAGE value="item test finished test2" />
     <MESSAGE value="item test finished test3" />
     <MESSAGE value="item test finished test4" />
@@ -666,7 +677,9 @@
     <MESSAGE value="safe circle radius added" />
     <MESSAGE value="safe circle radius added,modified." />
     <MESSAGE value="safe circle and item refresh." />
-    <option name="LAST_COMMIT_MESSAGE" value="safe circle and item refresh." />
+    <MESSAGE value="meet item and show" />
+    <MESSAGE value="meet item and show.modified." />
+    <option name="LAST_COMMIT_MESSAGE" value="meet item and show.modified." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1047,14 +1060,14 @@
     <entry file="file://$PROJECT_DIR$/generate_current_data.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
-          <caret line="17" column="42" selection-start-line="17" selection-start-column="42" selection-end-line="17" selection-end-column="42" />
+          <caret line="17" column="59" selection-start-line="17" selection-start-column="59" selection-end-line="17" selection-end-column="59" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dada/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="416" column="59" lean-forward="true" selection-start-line="416" selection-start-column="59" selection-end-line="416" selection-end-column="59" />
+        <state relative-caret-position="249">
+          <caret line="430" column="45" lean-forward="true" selection-start-line="430" selection-start-column="45" selection-end-line="430" selection-end-column="45" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
           </folding>

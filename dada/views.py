@@ -411,11 +411,11 @@ def listen_response(request):
             print('location: ',location)
             upload_info[uid] = location
             refresh_states(upload_info,current_data)
-            item_turple = current_data['player_has']
-            show_item = (0,0)
+            item_turple = current_data['player_has'][uid]
+            show_item = (0, 0)
             if item_turple[1] != 0:
-                show_item = (item_turple[0],item_turple[1])
-                current_data['player_has'] = (0,0)
+                show_item = (item_turple[0], item_turple[1])
+                current_data['player_has'][uid] = (0,0)
             try:
                 if uid not in current_data['player_blood']:
                     return HttpResponse(
