@@ -429,7 +429,8 @@ def listen_response(request):
                     'small_item' : current_data['player_small_location'],
                     'big_item' : current_data['big_item_location'],
                     'safe_circle_now_radius' : current_data['safe_circle_now'][1],
-                    'safe_circle_now_center' : current_data['safe_circle_now'][0]
+                    'safe_circle_now_center' : current_data['safe_circle_now'][0],
+                    'safe_circle_center' : current_data['safe_circle'][0]
                 })
             )
         else:
