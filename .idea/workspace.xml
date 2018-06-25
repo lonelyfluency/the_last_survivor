@@ -70,8 +70,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dada/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2409">
-              <caret line="416" column="46" selection-start-line="416" selection-start-column="46" selection-end-line="416" selection-end-column="46" />
+            <state relative-caret-position="198">
+              <caret line="278" column="42" lean-forward="true" selection-start-line="278" selection-start-column="42" selection-end-line="278" selection-end-column="42" />
               <folding>
                 <element signature="e#0#36#0" expanded="true" />
               </folding>
@@ -491,7 +491,14 @@
       <option name="project" value="LOCAL" />
       <updated>1529908897591</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="safe circle can move. --debug">
+      <created>1529912567677</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1529912567677</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -554,7 +561,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="django version change" />
     <MESSAGE value="package revise" />
     <MESSAGE value="package revise ...no idea" />
     <MESSAGE value="circle &amp; item refresh api" />
@@ -579,7 +585,8 @@
     <MESSAGE value="circle position modified" />
     <MESSAGE value="dead modification" />
     <MESSAGE value="safe circle can move." />
-    <option name="LAST_COMMIT_MESSAGE" value="safe circle can move." />
+    <MESSAGE value="safe circle can move. --debug" />
+    <option name="LAST_COMMIT_MESSAGE" value="safe circle can move. --debug" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -966,8 +973,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dada/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2409">
-          <caret line="416" column="46" selection-start-line="416" selection-start-column="46" selection-end-line="416" selection-end-column="46" />
+        <state relative-caret-position="198">
+          <caret line="278" column="42" lean-forward="true" selection-start-line="278" selection-start-column="42" selection-end-line="278" selection-end-column="42" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
           </folding>

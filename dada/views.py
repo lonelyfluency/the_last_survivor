@@ -287,7 +287,7 @@ def refresh_states(upload_info, current_data):
     enemy_show(current_data)
     small_item_show(current_data)
     refresh_damage(current_data)
-    shrink_circle(current_data)
+    #shrink_circle(current_data)
 
 
 # 刷新毒圈，每5分钟刷新
