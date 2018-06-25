@@ -110,7 +110,6 @@ def generate_data(upload_info):
     res['safe_circle'] = generate_safe_circle()
     res['safe_circle_now'] = copy.deepcopy(res['safe_circle'])
     res['safe_circle_shrink'] = ((0,0), 0)
-    res['safe_circle_shrink_cnt'] = 100
 
     res['player_location'] = {}
     for uid in upload_info.keys():
@@ -275,9 +274,8 @@ def shrink_circle(current_data):
     d_lng = current_data['safe_circle_shrink'][0][0]
     d_lat = current_data['safe_circle_shrink'][0][1]
     d_radius = current_data['safe_circle_shrink'][1]
-    if current_data['safe_circle_shrink_cnt'] > 0:
+    if current_data['safe_circle_now'][1] >= current_data['safe_circle'][1]:
         current_data['safe_circle_now'] = ((p_lng+d_lng, p_lat+d_lat), p_radius - d_radius, p_level)
-        current_data['safe_circle_shrink_cnt'] -= 1
 
     print(current_data['safe_circle_now'])
 
@@ -289,8 +287,8 @@ def refresh_states(upload_info, current_data):
     refresh_item_locations(current_data)
     enemy_show(current_data)
     small_item_show(current_data)
-    refresh_damage(current_data)
     shrink_circle(current_data)
+    refresh_damage(current_data)
 
 
 # 刷新毒圈，每5分钟刷新
@@ -398,12 +396,25 @@ def listen_response(request):
                             'visible': 0,
                             'enemy': [],
                             'small_item': [],
-                            'big_item': []
+                            'big_item': [],
+                            'rank': game_begin_cnt - len(current_data['the_dead'])
                         })
                     )
             except Exception:
                 return HttpResponse(
-                    "Sorry, game over!"
+                    json.dumps({
+                            'id': uid,
+                            'blood': 0,
+                            'damage': 0,
+                            'blood_limit': 0,
+                            'atk_range': 0,
+                            'vision_range': 0,
+                            'visible': 0,
+                            'enemy': [],
+                            'small_item': [],
+                            'big_item': [],
+                            'rank': game_begin_cnt - len(current_data['the_dead'])
+                        })
                 )
             return HttpResponse(
                 json.dumps({
