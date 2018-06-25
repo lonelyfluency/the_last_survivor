@@ -14,6 +14,7 @@ current_data 是一个保存所有玩家当前游戏状态的一个字典，其�
             safe_circle: 元组， ((经度,纬度),半径,等级)
             safe_circle_now:元组，（（经度，纬度），半径，等级）
             safe_circle_shrink: 元组，（(经度减少，纬度减少)，圆心靠近量）
+            safe_circle_shrink_cnt: 数字，代表要不要继续缩圈。
             the_dead: 列表，里面是所有死亡玩家的id。
 '''
 
