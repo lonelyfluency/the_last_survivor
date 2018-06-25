@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="548fade6-3d4d-43b4-94e5-83366e3dcada" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dada/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/dada/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generate_current_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/generate_current_data.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -32,8 +34,8 @@
       <file leaf-file-name="generate_current_data.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/generate_current_data.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-486">
-              <caret line="6" column="35" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
+            <state relative-caret-position="306">
+              <caret line="17" column="42" selection-start-line="17" selection-start-column="42" selection-end-line="17" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -59,8 +61,8 @@
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/IS_backend/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="321">
-              <caret line="18" selection-start-line="18" selection-end-line="18" />
+            <state relative-caret-position="159">
+              <caret line="21" column="47" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="47" />
               <folding>
                 <element signature="e#634#666#0" expanded="true" />
               </folding>
@@ -71,8 +73,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dada/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="461" column="30" selection-start-line="461" selection-start-column="30" selection-end-line="461" selection-end-column="30" />
+            <state relative-caret-position="231">
+              <caret line="416" column="59" lean-forward="true" selection-start-line="416" selection-start-column="59" selection-end-line="416" selection-end-column="59" />
               <folding>
                 <element signature="e#0#36#0" expanded="true" />
               </folding>
@@ -562,7 +564,21 @@
       <option name="project" value="LOCAL" />
       <updated>1529922885787</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="safe circle radius added,modified.">
+      <created>1529923536026</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1529923536026</updated>
+    </task>
+    <task id="LOCAL-00044" summary="safe circle and item refresh.">
+      <created>1529923721761</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1529923721761</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -625,8 +641,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="item modification" />
-    <MESSAGE value="item test" />
     <MESSAGE value="item test finished" />
     <MESSAGE value="item test finished test" />
     <MESSAGE value="item test finished test2" />
@@ -650,7 +664,9 @@
     <MESSAGE value="damage modified." />
     <MESSAGE value="circle refresh modified" />
     <MESSAGE value="safe circle radius added" />
-    <option name="LAST_COMMIT_MESSAGE" value="safe circle radius added" />
+    <MESSAGE value="safe circle radius added,modified." />
+    <MESSAGE value="safe circle and item refresh." />
+    <option name="LAST_COMMIT_MESSAGE" value="safe circle and item refresh." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1004,16 +1020,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/IS_backend/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-          <folding>
-            <element signature="e#634#666#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/IS_backend/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
@@ -1028,17 +1034,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/IS_backend/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="21" column="47" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="47" />
+          <folding>
+            <element signature="e#634#666#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/generate_current_data.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-486">
-          <caret line="6" column="35" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
+        <state relative-caret-position="306">
+          <caret line="17" column="42" selection-start-line="17" selection-start-column="42" selection-end-line="17" selection-end-column="42" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dada/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="461" column="30" selection-start-line="461" selection-start-column="30" selection-end-line="461" selection-end-column="30" />
+        <state relative-caret-position="231">
+          <caret line="416" column="59" lean-forward="true" selection-start-line="416" selection-start-column="59" selection-end-line="416" selection-end-column="59" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
           </folding>
