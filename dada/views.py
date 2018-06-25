@@ -121,7 +121,7 @@ def generate_data(upload_info):
 
     res['player_has'] = {}
     for uid in upload_info.keys():
-        res['player_has'][uid] = (0,0,0)
+        res['player_has'][uid] = (0,0)
 
     res['player_location'] = {}
     for uid in upload_info.keys():
@@ -184,17 +184,17 @@ def refresh_item_locations(current_data):
             if cor2dis(s_item[1], current_data['player_location'][uid]) < 5:
                 if s_item[0] == 1:
                     current_data['player_damage'][uid] += 5
-                    current_data['player_has'][uid].append((0,1,0))
+                    current_data['player_has'][uid] = (0, 1)
                 elif s_item[0] == 2:
                     current_data['player_blood'][uid] = add_health(10, current_data['player_blood'][uid],
                                                                    current_data['player_blood_limit'][uid])
-                    current_data['player_has'][uid].append((0, 2, 0))
+                    current_data['player_has'][uid] = (0, 2)
                 elif s_item[0] == 3:
                     current_data['player_vision_range'][uid] += 5
-                    current_data['player_has'][uid].append((0, 3, 0))
+                    current_data['player_has'][uid] = (0, 3)
                 else:
                     current_data['player_atk_range'][uid] += 5
-                    current_data['player_has'][uid].append((0, 4, 0))
+                    current_data['player_has'][uid] = (0, 4)
                 delhelper.append(s_item)
 
         for s_item in delhelper:
@@ -206,23 +206,23 @@ def refresh_item_locations(current_data):
             if cor2dis(b_item[1], current_data['player_location'][uid]) < 5:
                 if b_item[0] == 1:
                     current_data['player_damage'][uid] += 15
-                    current_data['player_has'][uid].append((1, 1, 0))
+                    current_data['player_has'][uid] = (1, 1)
                 elif b_item[0] == 2:
                     current_data['player_blood'][uid] = add_health(50, current_data['player_blood'][uid],
                                                                    current_data['player_blood_limit'][uid])
-                    current_data['player_has'][uid].append((1, 2, 0))
+                    current_data['player_has'][uid] = (1, 2)
                 elif b_item[0] == 3:
                     current_data['player_blood_limit'][uid] += 20
-                    current_data['player_has'][uid].append((1, 3, 0))
+                    current_data['player_has'][uid] = (1, 3)
                 elif b_item[0] == 4:
                     current_data['player_vision_range'][uid] += 15
-                    current_data['player_has'][uid].append((1, 4, 0))
+                    current_data['player_has'][uid] = (1, 4)
                 elif b_item[0] == 5:
                     current_data['player_atk_range'][uid] += 15
-                    current_data['player_has'][uid].append((1, 5, 0))
+                    current_data['player_has'][uid] = (1, 5)
                 else:
                     current_data['player_visible'][uid] = 0
-                    current_data['player_has'][uid].append((1, 6, 0))
+                    current_data['player_has'][uid] = (1, 6)
                 delhelper.append(b_item)
 
         for b_item in delhelper:
@@ -415,7 +415,7 @@ def listen_response(request):
             show_item = (0,0)
             if item_turple[1] != 0:
                 show_item = (item_turple[0],item_turple[1])
-                current_data['player_has'] = (0,0,0)
+                current_data['player_has'] = (0,0)
             try:
                 if uid not in current_data['player_blood']:
                     return HttpResponse(
