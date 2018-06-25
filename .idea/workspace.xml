@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="548fade6-3d4d-43b4-94e5-83366e3dcada" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dada/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/dada/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -72,8 +71,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dada/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="465" column="31" lean-forward="true" selection-start-line="465" selection-start-column="31" selection-end-line="465" selection-end-column="31" />
+            <state relative-caret-position="90">
+              <caret line="461" column="30" selection-start-line="461" selection-start-column="30" selection-end-line="461" selection-end-column="30" />
               <folding>
                 <element signature="e#0#36#0" expanded="true" />
               </folding>
@@ -549,7 +548,21 @@
       <option name="project" value="LOCAL" />
       <updated>1529919532424</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="circle refresh modified">
+      <created>1529922813424</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1529922813424</updated>
+    </task>
+    <task id="LOCAL-00042" summary="safe circle radius added">
+      <created>1529922885787</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1529922885787</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -612,8 +625,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="safe_circle modification turple2list" />
-    <MESSAGE value="safe_circle modification latitude" />
     <MESSAGE value="item modification" />
     <MESSAGE value="item test" />
     <MESSAGE value="item test finished" />
@@ -637,7 +648,9 @@
     <MESSAGE value="safe circle can move. --debug5" />
     <MESSAGE value="safe circle can move. --debug6" />
     <MESSAGE value="damage modified." />
-    <option name="LAST_COMMIT_MESSAGE" value="damage modified." />
+    <MESSAGE value="circle refresh modified" />
+    <MESSAGE value="safe circle radius added" />
+    <option name="LAST_COMMIT_MESSAGE" value="safe circle radius added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1024,8 +1037,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dada/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="465" column="31" lean-forward="true" selection-start-line="465" selection-start-column="31" selection-end-line="465" selection-end-column="31" />
+        <state relative-caret-position="90">
+          <caret line="461" column="30" selection-start-line="461" selection-start-column="30" selection-end-line="461" selection-end-column="30" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
           </folding>

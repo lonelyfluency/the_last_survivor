@@ -461,6 +461,7 @@ def refresh_circle(request):
             if circle_cnt == game_begin_cnt:
                 circle_cnt = 0
                 refresh_safety(current_data)
+                refresh_item(current_data)
                 print('safe_circle_refreshed.')
                 return HttpResponse(
                     json.dumps({
