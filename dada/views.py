@@ -11,11 +11,19 @@ global upload_info
 global game_begin_cnt
 global begin_status
 global has_begin
+
+global shrink_cnt
+global circle_cnt
+
+
 current_data = {}
 upload_info = {}
 game_begin_cnt = 0
 begin_status = 0
 has_begin = 0
+
+shrink_cnt = 0
+circle_cnt = 0
 
 def calcDistance(Lat_A, Lng_A, Lat_B, Lng_B):
     ra = 6378.140
@@ -283,11 +291,17 @@ def shrink_circle(current_data):
 
 # 主要操作,每秒一刷新
 def refresh_states(upload_info, current_data):
+    global shrink_cnt
+    global game_begin_cnt
     refresh_player_locations(upload_info, current_data)
     refresh_item_locations(current_data)
     enemy_show(current_data)
     small_item_show(current_data)
-    shrink_circle(current_data)
+    if shrink_cnt == game_begin_cnt:
+        shrink_cnt = 0
+        shrink_circle(current_data)
+    else:
+        shrink_cnt += 1
     refresh_damage(current_data)
 
 
@@ -369,7 +383,7 @@ def listen_response(request):
         if game_begin_cnt >= 2:
             begin_status = 1
             has_begin = 1
-            game_begin_cnt = 0
+            #game_begin_cnt = 0
         else:
             if not has_begin:
                 begin_status = 0
@@ -439,16 +453,21 @@ def listen_response(request):
 
 def refresh_circle(request):
     global current_data
+    global game_begin_cnt
+    global circle_cnt
     if request.method == "GET":
         if begin_status == 1:
-            refresh_safety(current_data)
-            print('safe_circle_refreshed.')
-            return HttpResponse(
-                json.dumps({
-                'center': current_data['safe_circle'][0],
-                'radius': current_data['safe_circle'][1]
-            })
-            )
+            if circle_cnt == game_begin_cnt:
+                refresh_safety(current_data)
+                print('safe_circle_refreshed.')
+                return HttpResponse(
+                    json.dumps({
+                    'center': current_data['safe_circle'][0],
+                    'radius': current_data['safe_circle'][1]
+                })
+                )
+            else:
+                circle_cnt += 1
         else:
             print('game_not_begin.')
             return HttpResponse(
