@@ -459,6 +459,7 @@ def refresh_circle(request):
     if request.method == "GET":
         if begin_status == 1:
             if circle_cnt == game_begin_cnt:
+                circle_cnt = 0
                 refresh_safety(current_data)
                 print('safe_circle_refreshed.')
                 return HttpResponse(
