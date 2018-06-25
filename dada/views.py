@@ -109,7 +109,7 @@ def generate_data(upload_info):
 
     res['safe_circle'] = generate_safe_circle()
     res['safe_circle_now'] = copy.deepcopy(res['safe_circle'])
-    res['safe_circle_shrink'] = (0, 0)
+    res['safe_circle_shrink'] = ((0,0), 0)
 
     res['player_location'] = {}
     for uid in upload_info.keys():
