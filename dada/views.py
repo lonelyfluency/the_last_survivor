@@ -393,7 +393,7 @@ def listen_response(request):
     global game_begin_cnt
     global begin_status
     global has_begin
-    if request.method == "POST":
+    if request.method == "GET":
         if game_begin_cnt >= 2:
             begin_status = 1
             has_begin = 1
